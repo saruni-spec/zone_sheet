@@ -1,8 +1,8 @@
-import jspreadsheet from './index.js';
+import zone_sheet from "./index.js";
 
-import 'jsuites/dist/jsuites.css';
-import '../dist/jspreadsheet.css';
+import "jsuites/dist/jsuites.css";
+import "../dist/zone_sheet.css";
 
-let worksheet = jspreadsheet(root, {
-    minDimensions: [10,10]
-})
+let worksheet = zone_sheet(root, {
+  minDimensions: [10, 10],
+});

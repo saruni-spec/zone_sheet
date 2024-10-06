@@ -1,9 +1,9 @@
-export = jspreadsheet;
-export as namespace jspreadsheet;
+export = zone_sheet;
+export as namespace zone_sheet;
 
-declare const jspreadsheet: jspreadsheet.JSpreadsheet;
+declare const zone_sheet: zone_sheet.Zone_sheet;
 
-declare namespace jspreadsheet {
+declare namespace zone_sheet {
   type CellValue = string | number | boolean;
 
   type DropdownSourceItem =
@@ -126,7 +126,7 @@ declare namespace jspreadsheet {
      */
     openEditor?: (
       cell: HTMLTableCellElement,
-      el: JspreadsheetInstanceElement,
+      el: Zone_sheetInstanceElement,
       empty: boolean | undefined,
       e: TouchEvent | undefined
     ) => void;
@@ -287,7 +287,7 @@ declare namespace jspreadsheet {
   type ToolbarItem = ToolbarIconItem | ToolbarSelectItem | ToolbarColorItem;
 
   interface NestedHeaderCell {
-    id?: string,
+    id?: string;
     colspan?: number;
     title?: string;
     align?: string;
@@ -473,7 +473,7 @@ declare namespace jspreadsheet {
 
   type MetaInformation = Record<string, any>;
 
-  interface JSpreadsheetOptions {
+  interface Zone_sheetOptions {
     /**
      * Show or not the "about" item in the context menu.
      * @default true
@@ -564,13 +564,13 @@ declare namespace jspreadsheet {
 
     /**
      * Column alignments. But they will only be used if the alignment is not specified in the column itself.
-     * @deprecated Column alignment should be specified in the {@link JSpreadsheetOptions.columns} property.
+     * @deprecated Column alignment should be specified in the {@link Zone_sheetOptions.columns} property.
      */
     colAlignments?: (HorizontalAlign | undefined | null)[];
 
     /**
      * Column titles. But they will only be used if the title is not specified in the column itself.
-     * @deprecated Column titles should be specified in the {@link JSpreadsheetOptions.columns} property.
+     * @deprecated Column titles should be specified in the {@link Zone_sheetOptions.columns} property.
      */
     colHeaders?: (string | undefined | null)[];
 
@@ -597,13 +597,13 @@ declare namespace jspreadsheet {
 
     /**
      * Column widths. But they will only be used if the width is not specified in the column itself.
-     * @deprecated Column widths should be specified in the {@link JSpreadsheetOptions.columns} property.
+     * @deprecated Column widths should be specified in the {@link Zone_sheetOptions.columns} property.
      */
     colWidths?: (string | number | undefined | null)[];
 
     /** Context menu content. */
     contextMenu?: (
-      instance: JspreadsheetInstance,
+      instance: Zone_sheetInstance,
       colIndex: string | null,
       rowIndex: string | null,
       event: PointerEvent
@@ -628,7 +628,7 @@ declare namespace jspreadsheet {
 
     /**
      * Default filename for a download method.
-     * @default "jspreadsheet"
+     * @default "zone_sheet"
      */
     csvFileName?: string;
 
@@ -756,7 +756,7 @@ declare namespace jspreadsheet {
      * @param changes - list of changes.
      */
     onafterchanges?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       changes: CellChange[]
     ) => void;
 
@@ -769,7 +769,7 @@ declare namespace jspreadsheet {
      * @param newValue - Value being applied to the cell
      */
     onbeforechange?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       cell: HTMLTableCellElement,
       colIndex: string | number,
       rowIndex: string | number,
@@ -783,7 +783,7 @@ declare namespace jspreadsheet {
      * @param numOfColumns - Number of columns to be removed.
      */
     onbeforedeletecolumn?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       colIndex: number,
       numOfColumns: number
     ) => undefined | boolean;
@@ -795,7 +795,7 @@ declare namespace jspreadsheet {
      * @param numOfRows - Number of rows that will be removed.
      */
     onbeforedeleterow?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       rowIndex: number,
       numOfRows: number
     ) => undefined | boolean;
@@ -808,7 +808,7 @@ declare namespace jspreadsheet {
      * @param insertBefore - The columns should be inserted before or after the informed position in the "colIndex" parameter.
      */
     onbeforeinsertcolumn?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       colIndex: number,
       numOfColumns: number,
       insertBefore: boolean
@@ -822,7 +822,7 @@ declare namespace jspreadsheet {
      * @param insertBefore - The rows should be inserted before or after the informed position in the "rowindex" parameter.
      */
     onbeforeinsertrow?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       rowIndex: number,
       numOfRows: number,
       insertBefore: boolean
@@ -840,7 +840,7 @@ declare namespace jspreadsheet {
      * @param rowIndex - Row index where it will start the paste.
      */
     onbeforepaste?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       copiedText: string,
       colIndex: number | string,
       rowIndex: number | string
@@ -849,7 +849,7 @@ declare namespace jspreadsheet {
     /**
      * Occurs before persisting any changes to the server.
      *
-     * This event is only called when the spreadsheet has the {@link JSpreadsheetOptions.persistance} property set.
+     * This event is only called when the spreadsheet has the {@link Zone_sheetOptions.persistance} property set.
      *
      * If this event returns false, the change is not persisted on the server.
      * If it returns a truthy value, that value is persisted instead of the initial value.
@@ -858,8 +858,8 @@ declare namespace jspreadsheet {
      * @param data - Changed data.
      */
     onbeforesave?: (
-      element: JspreadsheetInstanceElement,
-      jssInstance: JspreadsheetInstance,
+      element: Zone_sheetInstanceElement,
+      jssInstance: Zone_sheetInstance,
       data: { row: number; data: Record<number, CellValue> }[]
     ) => any;
 
@@ -867,7 +867,7 @@ declare namespace jspreadsheet {
      * Occurs when the table is blurred.
      * @param element - Root HTML element of this jss instance.
      */
-    onblur?: (element: JspreadsheetInstanceElement) => void;
+    onblur?: (element: Zone_sheetInstanceElement) => void;
 
     /**
      * Occurs after a column value is changed.
@@ -879,7 +879,7 @@ declare namespace jspreadsheet {
      * @param oldValue - Old cell value.
      */
     onchange?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       cell: HTMLTableCellElement,
       colIndex: string | number,
       rowIndex: string | number,
@@ -895,7 +895,7 @@ declare namespace jspreadsheet {
      * @param newValue - New column title.
      */
     onchangeheader?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       colIndex: string | number,
       oldValue: string,
       newValue: string
@@ -924,7 +924,7 @@ declare namespace jspreadsheet {
      * @param oldPageNumber - Page the worksheet was on.
      */
     onchangepage?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       newPageNumber: number,
       oldPageNumber: number
     ) => void;
@@ -955,7 +955,7 @@ declare namespace jspreadsheet {
      * @param rowIndex - Row index of the cell whose comment was changed.
      */
     oncomments?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       newComment: string | null,
       oldComment: string | null,
       cellPosition: [number, number],
@@ -970,7 +970,7 @@ declare namespace jspreadsheet {
      * @param hash - Deprecated.
      */
     oncopy?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       copiedData: string[],
       hash: number
     ) => void;
@@ -984,7 +984,7 @@ declare namespace jspreadsheet {
      * @param input - Input of the editor that was opened.
      */
     oncreateeditor?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       td: HTMLTableCellElement,
       colIndex: string,
       rowIndex: string,
@@ -999,7 +999,7 @@ declare namespace jspreadsheet {
      * @param deletedCells - List of cells removed.
      */
     ondeletecolumn?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       colIndex: number,
       numOfColumns: number,
       deletedCells: HTMLTableCellElement[][]
@@ -1013,7 +1013,7 @@ declare namespace jspreadsheet {
      * @param deletedCells - List of cells removed.
      */
     ondeleterow?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       rowIndex: number,
       numOfRows: number,
       deletedCells: HTMLTableCellElement[][]
@@ -1029,7 +1029,7 @@ declare namespace jspreadsheet {
      * @param wasSaved - Whether the value which was in the editor was saved in the cell or not.
      */
     oneditionend?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       td: HTMLTableCellElement,
       colIndex: number,
       rowIndex: number,
@@ -1045,7 +1045,7 @@ declare namespace jspreadsheet {
      * @param rowIndex - Row index of the cell whose editor was opened.
      */
     oneditionstart?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       td: HTMLTableCellElement,
       colIndex: string,
       rowIndex: string
@@ -1064,7 +1064,7 @@ declare namespace jspreadsheet {
      * Occurs when the table is focused.
      * @param element - Root HTML element of this jss instance.
      */
-    onfocus?: (element: JspreadsheetInstanceElement) => void;
+    onfocus?: (element: Zone_sheetInstanceElement) => void;
 
     /**
      * Occurs after a new column is inserted.
@@ -1075,7 +1075,7 @@ declare namespace jspreadsheet {
      * @param insertBefore - Columns were inserted before or after the informed position in the "colIndex" parameter.
      */
     oninsertcolumn?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       colIndex: number,
       numOfColumns: number,
       addedCells: HTMLTableCellElement[][],
@@ -1091,7 +1091,7 @@ declare namespace jspreadsheet {
      * @param insertBefore - Rows were inserted before or after the informed position in the "rowIndex" parameter.
      */
     oninsertrow?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       rowIndex: number,
       numOfRows: number,
       addedCells: HTMLTableCellElement[][],
@@ -1101,11 +1101,11 @@ declare namespace jspreadsheet {
     /**
      * This method is called when the method setData.
      * @param element - Root HTML element of this jss instance.
-     * @param instance - Jspreadsheet instance.
+     * @param instance - Zone_sheet instance.
      */
     onload?: (
-      element: JspreadsheetInstanceElement,
-      instance: JspreadsheetInstance
+      element: Zone_sheetInstanceElement,
+      instance: Zone_sheetInstance
     ) => void;
 
     /**
@@ -1116,7 +1116,7 @@ declare namespace jspreadsheet {
      * @param rowspan - Number of rows this merge occupies.
      */
     onmerge?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       mergeInitialCell: string,
       colspan: number,
       rowspan: number
@@ -1129,7 +1129,7 @@ declare namespace jspreadsheet {
      * @param newPosition - Column index after movement.
      */
     onmovecolumn?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       oldPosition: number,
       newPosition: number
     ) => void;
@@ -1141,7 +1141,7 @@ declare namespace jspreadsheet {
      * @param newPosition - Row index after movement.
      */
     onmoverow?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       oldPosition: string | number,
       newPosition: number
     ) => void;
@@ -1152,7 +1152,7 @@ declare namespace jspreadsheet {
      * @param pastedData - Data pasted to the spreadsheet.
      */
     onpaste?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       pastedData: string[][]
     ) => void;
 
@@ -1162,7 +1162,7 @@ declare namespace jspreadsheet {
      * @param historyRecord - History item that was redone. If there are no more actions to redo, it takes the value undefined.
      */
     onredo?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       historyRecord: HistoryRecord | undefined
     ) => void;
 
@@ -1174,7 +1174,7 @@ declare namespace jspreadsheet {
      * @param oldWidth - Old column width.
      */
     onresizecolumn?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       colIndex: string | number,
       newWidth: string | number,
       oldWidth: number
@@ -1188,7 +1188,7 @@ declare namespace jspreadsheet {
      * @param oldHeight - Old row height.
      */
     onresizerow?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       rowIndex: string | number,
       newHeight: number,
       oldHeight: number
@@ -1201,8 +1201,8 @@ declare namespace jspreadsheet {
      * @param data - Data that has been sent to the server.
      */
     onsave?: (
-      element: JspreadsheetInstanceElement,
-      jssInstance: JspreadsheetInstance,
+      element: Zone_sheetInstanceElement,
+      jssInstance: Zone_sheetInstance,
       data: any
     ) => void;
 
@@ -1215,7 +1215,7 @@ declare namespace jspreadsheet {
      * @param borderBottomIndex - Index of the last row contained by the selection.
      */
     onselection?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       borderLeftIndex: number,
       borderTopIndex: number,
       borderRightIndex: number,
@@ -1230,7 +1230,7 @@ declare namespace jspreadsheet {
      * @param order - Sorting direction. 0 for ascending and 1 for descending.
      */
     onsort?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       colIndex: string | number,
       order: 0 | 1
     ) => void;
@@ -1241,7 +1241,7 @@ declare namespace jspreadsheet {
      * @param historyRecord - History item that was undone. If there are no more actions to undo, it takes the value undefined.
      */
     onundo?: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       historyRecord: HistoryRecord | undefined
     ) => void;
 
@@ -1251,7 +1251,7 @@ declare namespace jspreadsheet {
     /**
      * Values available in the dropdown for choosing the number of rows per page.
      *
-     * This dropdown is only visible when the {@link JSpreadsheetOptions.search} option is true and the {@link JSpreadsheetOptions.pagination} option is greater than 0.
+     * This dropdown is only visible when the {@link Zone_sheetOptions.search} option is true and the {@link Zone_sheetOptions.pagination} option is greater than 0.
      */
     paginationOptions?: number[];
 
@@ -1274,7 +1274,7 @@ declare namespace jspreadsheet {
     parseTableFirstRowAsHeader?: boolean;
 
     /**
-     * Route where requests for data persistence will be sent. If true, the {@link JSpreadsheetOptions.url} property value will be used instead.
+     * Route where requests for data persistence will be sent. If true, the {@link Zone_sheetOptions.url} property value will be used instead.
      */
     persistance?: boolean | string;
 
@@ -1343,7 +1343,7 @@ declare namespace jspreadsheet {
     /**
      * If true, the HTML present inside the cells is also copied when the user copies cells from the spreadsheet.
      *
-     * This property only works when the {@link JSpreadsheetOptions.copyCompatibility} option is equal to "true".
+     * This property only works when the {@link Zone_sheetOptions.copyCompatibility} option is equal to "true".
      * @default false
      */
     stripHTMLOnCopy?: boolean;
@@ -1355,7 +1355,7 @@ declare namespace jspreadsheet {
 
     /**
      * Set the max height of the table.
-     * This property is only used when {@link JSpreadsheetOptions.tableOverflow} is allowed.
+     * This property is only used when {@link Zone_sheetOptions.tableOverflow} is allowed.
      * @default "300px"
      */
     tableHeight?: string;
@@ -1368,7 +1368,7 @@ declare namespace jspreadsheet {
 
     /**
      * Set the max width of the table.
-     * This property is only used when {@link JSpreadsheetOptions.tableOverflow} is allowed.
+     * This property is only used when {@link Zone_sheetOptions.tableOverflow} is allowed.
      */
     tableWidth?: string;
 
@@ -1386,7 +1386,7 @@ declare namespace jspreadsheet {
 
     /** Method to config custom script execution. NOTE: This does not work with lazyLoading, Pagination or Search options. */
     updateTable?: (
-      instance: JspreadsheetInstanceElement,
+      instance: Zone_sheetInstanceElement,
       cell: HTMLTableCellElement,
       colIndex: number,
       rowIndex: number,
@@ -1405,16 +1405,16 @@ declare namespace jspreadsheet {
     wordWrap?: boolean;
   }
 
-  interface JspreadsheetInstanceElement extends HTMLDivElement {
+  interface Zone_sheetInstanceElement extends HTMLDivElement {
     /**
      * Jss instance this element belongs to
      */
-    jexcel: JspreadsheetInstance;
+    jexcel: Zone_sheetInstance;
 
     /**
      * Jss instance this element belongs to
      */
-    jspreadsheet: JspreadsheetInstance;
+    zone_sheet: Zone_sheetInstance;
   }
 
   interface DragInfo {
@@ -1484,7 +1484,7 @@ declare namespace jspreadsheet {
     width: number;
   }
 
-  interface JspreadsheetInstance {
+  interface Zone_sheetInstance {
     ads: HTMLDivElement;
 
     /**
@@ -1535,8 +1535,8 @@ declare namespace jspreadsheet {
      * @param olnlyHighlighted - Copy only the contents of highlighted cells, or the contents of all cells. Default: false.
      * @param delimiter - Column separator. Default: "\t".
      * @param returnData - If true, ignore copy behavior (copy content to Clipboard and change aesthetics of selected content). Default: false.
-     * @param includeHeaders - If true, the header will also be copied, ignoring properties that could affect this behavior ({@link JSpreadsheetOptions.includeHeadersOnDownload} and {@link JSpreadsheetOptions.includeHeadersOnCopy}). Default: false.
-     * @param download - This parameter is only used if the "includeHeaders" parameter is false. In this case, if this parameter is true, the {@link JSpreadsheetOptions.includeHeadersOnDownload} property is used to decide whether the header is copied, but if this parameter is false, the {@link JSpreadsheetOptions.includeHeadersOnCopy} property is used instead. Default: false.
+     * @param includeHeaders - If true, the header will also be copied, ignoring properties that could affect this behavior ({@link Zone_sheetOptions.includeHeadersOnDownload} and {@link Zone_sheetOptions.includeHeadersOnCopy}). Default: false.
+     * @param download - This parameter is only used if the "includeHeaders" parameter is false. In this case, if this parameter is true, the {@link Zone_sheetOptions.includeHeadersOnDownload} property is used to decide whether the header is copied, but if this parameter is false, the {@link Zone_sheetOptions.includeHeadersOnCopy} property is used instead. Default: false.
      */
     copy: (
       olnlyHighlighted?: boolean,
@@ -1549,7 +1549,7 @@ declare namespace jspreadsheet {
     /**
      * Copies the contents of the cells selected in the table to the cells within the range informed when calling this method.
      *
-     * If {@link JspreadsheetInstance.selection} is empty, this method stops filling the range when it finds the first already filled cell.
+     * If {@link Zone_sheetInstance.selection} is empty, this method stops filling the range when it finds the first already filled cell.
      * @param o - First cell of the range to be filled.
      * @param d - Last cell of the range to be filled.
      */
@@ -1589,9 +1589,9 @@ declare namespace jspreadsheet {
     /**
      * Creates a table row.
      *
-     * This method updates the {@link JspreadsheetInstance.rows} and {@link JspreadsheetInstance.records} properties, but does not insert the row into the table.
+     * This method updates the {@link Zone_sheetInstance.rows} and {@link Zone_sheetInstance.records} properties, but does not insert the row into the table.
      * @param j - Row index.
-     * @param data - Row data. If omitted, data from property {@link JSpreadsheetOptions.data} at position "j" is used instead.
+     * @param data - Row data. If omitted, data from property {@link Zone_sheetOptions.data} at position "j" is used instead.
      */
     createRow: (j: number, data?: CellValue) => HTMLTableRowElement;
 
@@ -1602,10 +1602,10 @@ declare namespace jspreadsheet {
 
     /**
      * Create the table toolbar.
-     * @param toolbar - Toolbar settings. If omitted, the {@link JSpreadsheetOptions.toolbar} property is used instead.
+     * @param toolbar - Toolbar settings. If omitted, the {@link Zone_sheetOptions.toolbar} property is used instead.
      */
     createToolbar: (
-      toolbar?: NonNullable<JSpreadsheetOptions["toolbar"]>
+      toolbar?: NonNullable<Zone_sheetOptions["toolbar"]>
     ) => void;
 
     cursor: null | HTMLElement;
@@ -1618,7 +1618,7 @@ declare namespace jspreadsheet {
     /**
      * Remove columns.
      *
-     * This method returns false if the {@link JSpreadsheetOptions.onbeforedeletecolumn} event returns false or if the dialog {@link TranslationOptions.thisActionWillDestroyAnyExistingMergedCellsAreYouSure} receives a negative response.
+     * This method returns false if the {@link Zone_sheetOptions.onbeforedeletecolumn} event returns false or if the dialog {@link TranslationOptions.thisActionWillDestroyAnyExistingMergedCellsAreYouSure} receives a negative response.
      * @param columnNumber - Column index from which removal starts.
      * @param numOfColumns - Number of columns to be removed.
      */
@@ -1630,7 +1630,7 @@ declare namespace jspreadsheet {
     /**
      * Remove rows.
      *
-     * This method returns false if the {@link JSpreadsheetOptions.onbeforedeleterow} event returns false or if the dialog cases {@link TranslationOptions.thisActionWillDestroyAnyExistingMergedCellsAreYouSure} or {@link TranslationOptions.thisActionWillClearYourSearchResultsAreYouSure} receive a negative response.
+     * This method returns false if the {@link Zone_sheetOptions.onbeforedeleterow} event returns false or if the dialog cases {@link TranslationOptions.thisActionWillDestroyAnyExistingMergedCellsAreYouSure} or {@link TranslationOptions.thisActionWillClearYourSearchResultsAreYouSure} receive a negative response.
      * @param rowNumber - Row index from which removal starts.
      * @param numOfRows - Number of rows to be removed.
      */
@@ -1650,14 +1650,14 @@ declare namespace jspreadsheet {
     /**
      * Fire an event.
      *
-     * The behavior of this method is influenced by the {@link JspreadsheetInstance.ignoreEvents} property.
+     * The behavior of this method is influenced by the {@link Zone_sheetInstance.ignoreEvents} property.
      *
-     * Before firing any event, this method fires the {@link JSpreadsheetOptions.onevent} event.
+     * Before firing any event, this method fires the {@link Zone_sheetOptions.onevent} event.
      *
      * The value returned by this method is the value returned by the event that was called.
-     * If the called event is not defined, the returned value is the value returned by the {@link JSpreadsheetOptions.onevent} event.
+     * If the called event is not defined, the returned value is the value returned by the {@link Zone_sheetOptions.onevent} event.
      *
-     * If the event called is the {@link JSpreadsheetOptions.onafterchanges} and the {@link JSpreadsheetOptions.persistance} property is set, this method sends a request to the server to save the change.
+     * If the event called is the {@link Zone_sheetOptions.onafterchanges} and the {@link Zone_sheetOptions.persistance} property is set, this method sends a request to the server to save the change.
      * @param event - Event name.
      * @param rest - Arguments to be passed to the event.
      */
@@ -1672,7 +1672,7 @@ declare namespace jspreadsheet {
 
     /**
      * Get the current data as a CSV file.
-     * @param includeHeaders - If true, include the header regardless of the {@link JSpreadsheetOptions.includeHeadersOnDownload} property value
+     * @param includeHeaders - If true, include the header regardless of the {@link Zone_sheetOptions.includeHeadersOnDownload} property value
      */
     download: (includeHeaders?: boolean) => void;
 
@@ -1689,7 +1689,7 @@ declare namespace jspreadsheet {
     /**
      * Root HTML element of this jss instance.
      */
-    el: JspreadsheetInstance;
+    el: Zone_sheetInstance;
 
     /**
      * Solve formula.
@@ -1770,7 +1770,7 @@ declare namespace jspreadsheet {
     /**
      * Get the full or partial table data.
      * @param highlighted - If true, get only data from highlighted cells. If false, get data from all cells. Default: false.
-     * @param dataOnly - If false, and the {@link JSpreadsheetOptions.copyCompatibility} property is true, the return is constructed using the innerHTML of the cells. Otherwise, it is constructed using the {@link JSpreadsheetOptions.data} property. Default: false.
+     * @param dataOnly - If false, and the {@link Zone_sheetOptions.copyCompatibility} property is true, the return is constructed using the innerHTML of the cells. Otherwise, it is constructed using the {@link Zone_sheetOptions.data} property. Default: false.
      */
     getData: (highlighted?: boolean, dataOnly?: boolean) => CellValue[][];
 
@@ -1884,7 +1884,7 @@ declare namespace jspreadsheet {
     /**
      * Get the value of a cell.
      * @param cell - Cell name, coordinates or HTML element.
-     * @param processedValue - If true, and the {@link JSpreadsheetOptions.copyCompatibility} property is also true, it returns the cell's innerHTML. Otherwise, it returns the value of the cell in the {@link JSpreadsheetOptions.data} property.
+     * @param processedValue - If true, and the {@link Zone_sheetOptions.copyCompatibility} property is also true, it returns the cell's innerHTML. Otherwise, it returns the value of the cell in the {@link Zone_sheetOptions.data} property.
      */
     getValue: (
       cell: [number, number] | string | HTMLTableCellElement,
@@ -1895,7 +1895,7 @@ declare namespace jspreadsheet {
      * Get the value of a cell by its coordinates.
      * @param x - Column index.
      * @param y - Row index.
-     * @param processedValue - If true, and the {@link JSpreadsheetOptions.copyCompatibility} property is also true, it returns the cell's innerHTML. Otherwise, it returns the value of the cell in the {@link JSpreadsheetOptions.data} property.
+     * @param processedValue - If true, and the {@link Zone_sheetOptions.copyCompatibility} property is also true, it returns the cell's innerHTML. Otherwise, it returns the value of the cell in the {@link Zone_sheetOptions.data} property.
      */
     getValueFromCoords: (
       x: number,
@@ -1957,7 +1957,7 @@ declare namespace jspreadsheet {
     history: HistoryRecord[];
 
     /**
-     * Current position of the {@link JspreadsheetInstance.history} property. Used to control movement through history.
+     * Current position of the {@link Zone_sheetInstance.history} property. Used to control movement through history.
      */
     historyIndex: number;
 
@@ -1976,7 +1976,7 @@ declare namespace jspreadsheet {
     historyProcessRow: (type: 1 | 0, historyRecord: HistoryRecord) => void;
 
     /**
-     * If true, the {@link JspreadsheetInstance.dispatch} method no longer fires events, but still saves changes to the server.
+     * If true, the {@link Zone_sheetInstance.dispatch} method no longer fires events, but still saves changes to the server.
      */
     ignoreEvents: boolean;
 
@@ -1993,7 +1993,7 @@ declare namespace jspreadsheet {
     /**
      * Insert one or more columns.
      *
-     * This method returns false if the {@link JSpreadsheetOptions.onbeforeinsertcolumn} event returns false or if the {@link TranslationOptions.thisActionWillDestroyAnyExistingMergedCellsAreYouSure} dialog receives a negative response.
+     * This method returns false if the {@link Zone_sheetOptions.onbeforeinsertcolumn} event returns false or if the {@link TranslationOptions.thisActionWillDestroyAnyExistingMergedCellsAreYouSure} dialog receives a negative response.
      * @param mixed - Number of columns to insert. It can also be an array of values, but in this case, only one column is inserted, whose data is based on the array items. Default: 1.
      * @param columnNumber - Index of the column used as reference for the insertion. Default: last column.
      * @param insertBefore - Insert new columns before or after the reference column. Default: false.
@@ -2009,7 +2009,7 @@ declare namespace jspreadsheet {
     /**
      * Insert one or more rows.
      *
-     * This method returns false if the {@link JSpreadsheetOptions.onbeforeinsertrow} event returns false or if the {@link TranslationOptions.thisActionWillDestroyAnyExistingMergedCellsAreYouSure} or {@link TranslationOptions.thisActionWillClearYourSearchResultsAreYouSure} dialogs receive a negative response.
+     * This method returns false if the {@link Zone_sheetOptions.onbeforeinsertrow} event returns false or if the {@link TranslationOptions.thisActionWillDestroyAnyExistingMergedCellsAreYouSure} or {@link TranslationOptions.thisActionWillClearYourSearchResultsAreYouSure} dialogs receive a negative response.
      * @param mixed - Number of rows to insert. It can also be an array of values, but in this case, only one row is inserted, whose data is based on the array items. Default: 1.
      * @param rowNumber - Index of the row used as reference for the insertion. Default: last row.
      * @param insertBefore - Insert new rows before or after the reference row. Default: false.
@@ -2062,7 +2062,7 @@ declare namespace jspreadsheet {
     loadDown: () => 0 | 1;
 
     /**
-     * Move to a virtual page within a table using {@link JSpreadsheetOptions.lazyLoading}. Each virtual page has 100 lines.
+     * Move to a virtual page within a table using {@link Zone_sheetOptions.lazyLoading}. Each virtual page has 100 lines.
      * @param pageNumber
      */
     loadPage: (pageNumber: number) => void;
@@ -2074,7 +2074,7 @@ declare namespace jspreadsheet {
     loadUp: () => 0 | 1;
 
     /**
-     * Load the page where the DOM represented by {@link JspreadsheetInstance.selectedCell} would be.
+     * Load the page where the DOM represented by {@link Zone_sheetInstance.selectedCell} would be.
      */
     loadValidation: () => boolean;
 
@@ -2098,14 +2098,14 @@ declare namespace jspreadsheet {
     moveRow: (o: number, d: number, ignoreDom?: boolean) => false | undefined;
 
     /**
-     * Shortcut to fire the {@link JSpreadsheetOptions.onafterchanges} event.
+     * Shortcut to fire the {@link Zone_sheetOptions.onafterchanges} event.
      *
-     * Internally, this method uses the {@link JspreadsheetInstance.dispatch} method.
+     * Internally, this method uses the {@link Zone_sheetInstance.dispatch} method.
      * @param element - Root HTML element of this jss instance.
      * @param changes - list of changes.
      */
     onafterchanges: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       changes: CellChange[]
     ) => void;
 
@@ -2124,7 +2124,7 @@ declare namespace jspreadsheet {
     /**
      * Open the column filter.
      *
-     * This method only runs if the {@link JSpreadsheetOptions.filters} property is true.
+     * This method only runs if the {@link Zone_sheetOptions.filters} property is true.
      * @param columnId - Column index.
      */
     openFilter: (columnId: number) => void;
@@ -2132,7 +2132,7 @@ declare namespace jspreadsheet {
     /**
      * Spreadsheet settings.
      */
-    options: JSpreadsheetOptions;
+    options: Zone_sheetOptions;
 
     /**
      * Reorder rows based on values in a column.
@@ -2144,7 +2144,7 @@ declare namespace jspreadsheet {
     orderBy: (column: number, order: 0 | 1) => boolean | undefined;
 
     /**
-     * Go to page. Valid only when {@link JSpreadsheetOptions.pagination} is true.
+     * Go to page. Valid only when {@link Zone_sheetOptions.pagination} is true.
      * @param pageNumber - Page number (starting at 0).
      */
     page: (pageNumber: number) => number;
@@ -2205,7 +2205,7 @@ declare namespace jspreadsheet {
     };
 
     /**
-     * Prepare the jspreadsheet table.
+     * Prepare the zone_sheet table.
      */
     prepareTable: () => void;
 
@@ -2263,7 +2263,7 @@ declare namespace jspreadsheet {
 
     /**
      * Reset highlighted cell selection.
-     * @param blur - If true and there were highlighted cells, this method fires the {@link JSpreadsheetOptions.onblur} event.
+     * @param blur - If true and there were highlighted cells, this method fires the {@link Zone_sheetOptions.onblur} event.
      * @returns If there were highlighted cells, it returns 1, otherwise it returns 0.
      */
     resetSelection: (blur?: boolean) => 0 | 1;
@@ -2308,7 +2308,7 @@ declare namespace jspreadsheet {
     /**
      * Post json to a remote server.
      *
-     * This method fires the {@link JSpreadsheetOptions.onbeforesave} and {@link JSpreadsheetOptions.onsave} events.
+     * This method fires the {@link Zone_sheetOptions.onbeforesave} and {@link Zone_sheetOptions.onsave} events.
      * @param url - Server url.
      * @param data - data to be saved.
      * @returns If the "onbeforesave" event returns false, this method returns false.
@@ -2425,7 +2425,7 @@ declare namespace jspreadsheet {
      * @param cellName - Name or coordinates of a cell. If it is a falsy value, this method merges the selected cells in the table and ignores all parameters of this method except "ignoreHistoryAndEvents".
      * @param colspan - Number of columns this merge occupies.
      * @param rowspan - Number of rows this merge occupies.
-     * @param ignoreHistoryAndEvents - If true, do not add this change to the history or fire the {@link JSpreadsheetOptions.onmerge} event.
+     * @param ignoreHistoryAndEvents - If true, do not add this change to the history or fire the {@link Zone_sheetOptions.onmerge} event.
      * @returns If the "cellName" parameter is a false value, and there are no cells selected in the table, this method returns null.
      */
     setMerge: (
@@ -2637,7 +2637,7 @@ declare namespace jspreadsheet {
     updateCopySelection: (x3: number, y3: number) => void;
 
     /**
-     * Place the {@link JspreadsheetInstance.corner} in the last cell of the {@link JspreadsheetInstance.highlighted}.
+     * Place the {@link Zone_sheetInstance.corner} in the last cell of the {@link Zone_sheetInstance.highlighted}.
      */
     updateCornerPosition: () => void;
 
@@ -2661,7 +2661,7 @@ declare namespace jspreadsheet {
     updateFormulaChain: (
       x: number,
       y: number,
-      records: ReturnType<JspreadsheetInstance["updateCell"]>[]
+      records: ReturnType<Zone_sheetInstance["updateCell"]>[]
     ) => void;
 
     /**
@@ -2703,7 +2703,7 @@ declare namespace jspreadsheet {
     updateOrderArrow: (column: number, order?: boolean) => void;
 
     /**
-     * Update the content of the {@link JspreadsheetInstance.pagination}.
+     * Update the content of the {@link Zone_sheetInstance.pagination}.
      */
     updatePagination: () => void;
 
@@ -2771,7 +2771,7 @@ declare namespace jspreadsheet {
     version: string;
   };
 
-  interface TabOptions extends JSpreadsheetOptions {
+  interface TabOptions extends Zone_sheetOptions {
     sheetName: string;
   }
 
@@ -2834,11 +2834,11 @@ declare namespace jspreadsheet {
     parseCSV: (str: string, delimiter?: string) => string[][];
   }
 
-  interface JSpreadsheet {
+  interface Zone_sheet {
     (
       element: HTMLDivElement | HTMLTableElement,
-      options?: JSpreadsheetOptions
-    ): JspreadsheetInstance;
+      options?: Zone_sheetOptions
+    ): Zone_sheetInstance;
 
     /**
      * Set event listeners.
@@ -2864,8 +2864,8 @@ declare namespace jspreadsheet {
      */
     createFromTable: (
       el: HTMLTableElement,
-      options?: JSpreadsheetOptions
-    ) => JSpreadsheetOptions;
+      options?: Zone_sheetOptions
+    ) => Zone_sheetOptions;
 
     /**
      * Compatibility with previous versions.
@@ -2875,7 +2875,7 @@ declare namespace jspreadsheet {
     /**
      * Current instance of jss.
      */
-    current: null | JspreadsheetInstance;
+    current: null | Zone_sheetInstance;
 
     /**
      * Handler used when using the "Ctrl + x" command on an editable spreadsheet.
@@ -2888,7 +2888,7 @@ declare namespace jspreadsheet {
      * @param destroyEventHandlers - Remove event listeners. Default: false.
      */
     destroy: (
-      element: JspreadsheetInstanceElement,
+      element: Zone_sheetInstanceElement,
       destroyEventHandlers?: boolean
     ) => void;
 
@@ -2941,7 +2941,7 @@ declare namespace jspreadsheet {
      * If not part of the worksheet, this method returns an array with two items equal to zero.
      * @param element - HTML Element.
      */
-    getElement: (element: HTMLElement) => [0 | JspreadsheetInstance, 0 | 1 | 2];
+    getElement: (element: HTMLElement) => [0 | Zone_sheetInstance, 0 | 1 | 2];
 
     /**
      * Convert coordinates from "A1" style.

@@ -2,7 +2,7 @@ const { expect } = require("chai");
 
 describe("Data", () => {
   it("Testing data", () => {
-    let test = jspreadsheet(root, {
+    let test = zone_sheet(root, {
       data: [
         ["Mazda", 2001, 2000, 1],
         ["Peugeot", 2010, 5000, "=B2+C2"],
